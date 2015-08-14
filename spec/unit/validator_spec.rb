@@ -1,6 +1,6 @@
-require 'spec_helper'
-
 describe 'Validation' do
+  include_context 'database'
+
   subject(:validator) { user_validator.new(attributes) }
 
   let(:user_attrs) do
@@ -29,6 +29,8 @@ describe 'Validation' do
       end
     }
   end
+
+  before { ROM.finalize }
 
   describe '#call' do
     let(:attributes) { user_attrs.new }

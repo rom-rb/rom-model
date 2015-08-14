@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe 'Embedded validators' do
   it 'allows defining a validator for a nested hash' do
     user_validator = Class.new do

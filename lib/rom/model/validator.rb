@@ -1,8 +1,18 @@
-require 'rom/rails/model/validator/uniqueness_validator'
+require 'charlatan'
+
+require 'rom/support/constants'
+require 'rom/constants'
+
+require 'rom/model/validator/uniqueness_validator'
 require 'rom/support/class_macros'
 
 module ROM
   module Model
+    class ValidationError < CommandError
+      include Charlatan.new(:errors)
+      include Equalizer.new(:errors)
+    end
+
     # Mixin for ROM-compliant validator objects
     #
     # @example

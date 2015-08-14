@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 describe ROM::Model::Attributes do
   let(:attributes) do
     Class.new do

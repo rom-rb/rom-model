@@ -1,5 +1,5 @@
 require 'virtus'
-require 'active_model/conversion'
+require 'active_model' # can't cherry-pick conversion :(
 
 module ROM
   module Model
