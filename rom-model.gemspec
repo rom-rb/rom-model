@@ -17,7 +17,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency 'addressable', '~> 2.3'
   spec.add_runtime_dependency 'charlatan', '~> 0.1'
   spec.add_runtime_dependency 'virtus', '~> 1.0', '>= 1.0.5'
   spec.add_runtime_dependency 'activemodel', '>= 3.0', '< 5.0'
