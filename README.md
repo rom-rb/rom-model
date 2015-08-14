@@ -60,8 +60,6 @@ Or install it yourself as:
 
     $ gem install rom-model
 
-Check out [SQL guide](http://rom-rb.org/guides/adapters/sql/) for usage examples.
-
 ## License
 
 See `LICENSE` file.
