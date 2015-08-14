@@ -23,6 +23,8 @@ Dir[root.join('shared/*.rb').to_s].each do |f|
   require f
 end
 
+I18n.load_path << [root.join('../config/locales/en.yml').realpath]
+
 RSpec.configure do |config|
   config.order = "random"
 end

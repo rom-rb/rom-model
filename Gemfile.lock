@@ -25,6 +25,7 @@ PATH
     rom-model (0.1.0)
       activemodel (>= 3.0, < 5.0)
       charlatan (~> 0.1)
+      i18n
       rom-support (~> 0.1)
       virtus (~> 1.0, >= 1.0.5)
 

@@ -1,0 +1,8 @@
+en:
+  activemodel:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: 'has already been taken'

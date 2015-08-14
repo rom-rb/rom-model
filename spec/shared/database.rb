@@ -18,6 +18,7 @@ shared_context 'database' do
       primary_key :id
       column :name, String, null: false
       column :email, String, null: false
+      column :birthday, Date
       index :name, unique: true
       check { char_length(name) > 2 }
     end
