@@ -1,3 +1,3 @@
-# 0.1.0 to-be-released
+# 0.1.0 2015-08-14
 
 Extracted code from rom-rails 0.5.0
