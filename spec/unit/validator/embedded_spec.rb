@@ -189,4 +189,18 @@ describe 'Embedded validators' do
 
     expect(validator).to be_valid
   end
+
+  it 'sets model name' do
+    user_validator = Class.new do
+      include ROM::Model::Validator
+
+      set_model_name 'User'
+
+      embedded :tasks, presence: false do
+        set_model_name 'Task'
+      end
+    end
+
+    expect(user_validator.embedded_validators[:tasks].model_name.name).to eql('Task')
+  end
 end
