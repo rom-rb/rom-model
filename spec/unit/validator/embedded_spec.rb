@@ -169,4 +169,24 @@ describe 'Embedded validators' do
 
     expect(validator.errors[:tasks][0][:base]).to include('does not look correct')
   end
+
+  it 'allows skipping presence check' do
+    user_validator = Class.new do
+      include ROM::Model::Validator
+
+      set_model_name 'User'
+
+      validates :name, presence: true
+
+      embedded :tasks, presence: false do
+        set_model_name 'Task'
+      end
+    end
+
+    attributes = { name: 'Jade' }
+
+    validator = user_validator.new(attributes)
+
+    expect(validator).to be_valid
+  end
 end
