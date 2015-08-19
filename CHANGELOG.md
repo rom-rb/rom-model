@@ -4,6 +4,7 @@
 
 - Embedded validator has access to `root` node of the input attributes (solnic)
 - Embedded validator has access to `parent` node of the input attributes (solnic)
+- Presence validation for embedded validation can be skipped with `presence: false` option (solnic)
 
 [Compare v0.1.0...v0.1.1](https://github.com/rom-rb/rom-model/compare/v0.1.0...v0.1.1)
 
