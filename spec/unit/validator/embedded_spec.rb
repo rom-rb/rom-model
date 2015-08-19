@@ -113,4 +113,60 @@ describe 'Embedded validators' do
 
     expect(user_validator.embedded_validators[:tasks]).to be_present
   end
+
+  it 'adds access to the root node in attribute hash' do
+    user_validator = Class.new do
+      include ROM::Model::Validator
+
+      set_model_name 'User'
+
+      validates :name, presence: true
+
+      embedded :tasks do
+        set_model_name 'Task'
+
+        validate do
+          if attributes[:title] != "#{root[:name]} Task"
+            errors.add(:base, 'does not look correct')
+          end
+        end
+      end
+    end
+
+    attributes = { name: 'Jade', tasks: [{ title: 'Jane Task' }] }
+
+    validator = user_validator.new(attributes)
+
+    validator.validate
+
+    expect(validator.errors[:tasks][0][:base]).to include('does not look correct')
+  end
+
+  it 'adds access to the parent node in attribute hash' do
+    user_validator = Class.new do
+      include ROM::Model::Validator
+
+      set_model_name 'User'
+
+      validates :name, presence: true
+
+      embedded :tasks do
+        set_model_name 'Task'
+
+        validate do
+          if attributes[:title] != "#{parent[:name]} Task"
+            errors.add(:base, 'does not look correct')
+          end
+        end
+      end
+    end
+
+    attributes = { name: 'Jade', tasks: [{ title: 'Jane Task' }] }
+
+    validator = user_validator.new(attributes)
+
+    validator.validate
+
+    expect(validator.errors[:tasks][0][:base]).to include('does not look correct')
+  end
 end

@@ -60,11 +60,23 @@ module ROM
       # @api private
       attr_reader :attr_names
 
+      # @attr_reader [Object] root The root node in attributes hash of an embedded validator
+      #
+      # @api public
+      attr_reader :root
+
+      # @attr_reader [Object] root The parent node in attributes hash of an embedded validator
+      #
+      # @api public
+      attr_reader :parent
+
       delegate :model_name, to: :attributes
 
       # @api private
-      def initialize(attributes)
+      def initialize(attributes, root = attributes, parent = nil)
         @attributes = attributes
+        @root = root
+        @parent = parent
         @attr_names = self.class.validators.map(&:attributes).flatten.uniq
       end
 
@@ -169,21 +181,26 @@ module ROM
         #   validator.errors[:tasks] # errors for tasks
         #
         # @api public
-        def embedded(name, &block)
-          validator_class = Class.new { include ROM::Model::Validator }
-          validator_class.class_eval(&block)
+        def embedded(name, options = {}, &block)
+          presence = options.fetch(:presence, true)
+
+          validator_class = Class.new {
+            include ROM::Model::Validator
+          }
+
           validator_class.set_model_name(name.to_s.classify)
+          validator_class.class_eval(&block)
 
           embedded_validators[name] = validator_class
 
-          validates name, presence: true
+          validates name, presence: true if presence
 
           validate do
             value = attributes[name]
 
             if value.present?
               Array([value]).flatten.each do |object|
-                validator = validator_class.new(object)
+                validator = validator_class.new(object, root, attributes)
                 validator.validate
 
                 if validator.errors.any?
