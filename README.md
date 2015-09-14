@@ -25,7 +25,7 @@ The package includes:
 ## The Plan™
 
 This gem is built on top of existing 3rd party gems that have proven to be stable
-and good-enough. Unfortunatelly neither Virtus nor ActiveModel do not meet certain
+and good-enough. Unfortunately neither Virtus nor ActiveModel do not meet certain
 design requirements to be a good fit in the long term.
 
 For that reason we're exploring how to build a better foundation for rom-model.
