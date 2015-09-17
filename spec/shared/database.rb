@@ -24,6 +24,10 @@ shared_context 'database' do
     end
 
     setup.relation(:users)
+
+    setup.commands(:users) do
+      define(:create)
+    end
   end
 
   after do
