@@ -6,11 +6,21 @@ require 'rom/constants'
 require 'rom/model/validator/uniqueness_validator'
 require 'rom/support/class_macros'
 
+require 'rom/pipeline'
+
 module ROM
   module Model
     class ValidationError < CommandError
       include Charlatan.new(:errors)
       include Equalizer.new(:errors)
+    end
+
+    class Composite < Pipeline::Composite
+      def call(attributes)
+        left.call(attributes)
+
+        right.call(attributes)
+      end
     end
 
     # Mixin for ROM-compliant validator objects
@@ -99,6 +109,7 @@ module ROM
         attributes
       end
 
+
       private
 
       # This is needed for ActiveModel::Validations to work properly
@@ -155,6 +166,21 @@ module ROM
         def call(attributes)
           validator = new(attributes)
           validator.call
+        end
+
+        # Compose a validation with a command
+        #
+        # The command will be called if validations succeed
+        #
+        # @example
+        #   validated_command = (UserValidator >> users.create)
+        #   validated_command.call(attributes)
+        #
+        # @return [Composite]
+        #
+        # @api public
+        def >>(other)
+          Composite.new(self, other)
         end
 
         # Specify an embedded validator for nested structures
