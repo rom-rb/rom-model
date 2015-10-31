@@ -1,5 +1,5 @@
 module ROM
   module Model
-    VERSION = '0.1.1'.freeze
+    VERSION = '0.2.0.beta1'.freeze
   end
 end
