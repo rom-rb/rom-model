@@ -1,7 +1,5 @@
-
-
-describe "Chaning validations into a commad" do
-  include_context "database"
+describe 'Chaning validations into a commad' do
+  include_context 'database'
 
   subject(:validator) { user_validator.new(attributes) }
 
@@ -32,29 +30,24 @@ describe "Chaning validations into a commad" do
     }
   end
 
-  before { ROM.finalize }
-
-
-  it "works" do
-    expect { rom.command(:users).create.call(name: "John", email: "john@doe.org") }.to change(rom.relation(:users), :count).by 1
+  it 'works' do
+    expect { rom.command(:users).create.call(name: 'John', email: 'john@doe.org') }
+      .to change(rom.relation(:users), :count).by 1
   end
 
-  it "runs validations" do
+  it 'runs validations' do
     validated_command = (user_validator >> rom.command(:users).create)
-    expect { 
+    expect {
       validated_command.call({})
     }.to raise_error(ROM::Model::ValidationError)
   end
 
-  it "calls the nested command when validations pass" do
+  it 'calls the nested command when validations pass' do
     validated_command = (user_validator >> rom.command(:users).create)
-    attributes = user_attrs.new(name: "John", email: "john@doe.org")
-    expect { 
+    attributes = user_attrs.new(name: 'John', email: 'john@doe.org')
+    expect {
       validated_command.call(attributes)
     }.to change(rom.relation(:users), :count).by 1
 
   end
-
-
-
 end

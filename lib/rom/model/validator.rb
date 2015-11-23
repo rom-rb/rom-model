@@ -1,3 +1,4 @@
+require 'dry-equalizer'
 require 'charlatan'
 
 require 'rom/support/constants'
@@ -12,7 +13,7 @@ module ROM
   module Model
     class ValidationError < CommandError
       include Charlatan.new(:errors)
-      include Equalizer.new(:errors)
+      include Dry::Equalizer(:errors)
     end
 
     class Composite < Pipeline::Composite
@@ -54,7 +55,7 @@ module ROM
           extend ROM::ClassMacros
 
           include ActiveModel::Validations
-          include Equalizer.new(:attributes, :errors)
+          include Dry::Equalizer(:attributes, :errors)
 
           base.defines :embedded_validators
 

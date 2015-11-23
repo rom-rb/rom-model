@@ -1,5 +1,6 @@
 shared_context 'database' do
-  let(:rom) { ROM.env }
+  let(:rom) { ROM.env = ROM.container(configuration) }
+  let(:configuration) { ROM::Configuration.new(:sql, DB_URI).use(:macros) }
   let(:uri) { DB_URI }
   let(:conn) { Sequel.connect(uri) }
 
@@ -10,8 +11,6 @@ shared_context 'database' do
   end
 
   before do
-    setup = ROM.setup(:sql, conn)
-
     drop_tables
 
     conn.create_table :users do
@@ -23,9 +22,9 @@ shared_context 'database' do
       check { char_length(name) > 2 }
     end
 
-    setup.relation(:users)
+    configuration.relation(:users)
 
-    setup.commands(:users) do
+    configuration.commands(:users) do
       define(:create)
     end
   end

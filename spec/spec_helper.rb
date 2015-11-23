@@ -28,5 +28,3 @@ I18n.load_path << [root.join('../config/locales/en.yml').realpath]
 RSpec.configure do |config|
   config.order = "random"
 end
-
-ROM.use :auto_registration
