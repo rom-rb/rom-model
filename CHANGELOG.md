@@ -4,7 +4,7 @@
 
 * Validators support `>>` pipeline operator (cflipse)
 
-[Compare v0.1.0...HEAD](https://github.com/rom-rb/rom-model/compare/v0.1.0...HEAD)
+[Compare v0.1.1...HEAD](https://github.com/rom-rb/rom-model/compare/v0.1.1...HEAD)
 
 # 0.1.1 2015-08-19
 
