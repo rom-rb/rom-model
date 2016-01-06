@@ -1,10 +1,10 @@
-# 0.2.0 to-be-released
+# 0.2.0 2016-01-06
 
 ## Added
 
 * Validators support `>>` pipeline operator (cflipse)
 
-[Compare v0.1.1...HEAD](https://github.com/rom-rb/rom-model/compare/v0.1.1...HEAD)
+[Compare v0.1.1...v0.2.0](https://github.com/rom-rb/rom-model/compare/v0.1.1...v0.2.0)
 
 # 0.1.1 2015-08-19
 
