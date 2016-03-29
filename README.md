@@ -4,7 +4,7 @@
 [codeclimate]: https://codeclimate.com/github/rom-rb/rom-model
 [inchpages]: http://inch-ci.org/github/rom-rb/rom-model
 
-# ROM::Model
+# rom-model
 
 [![Gem Version](https://badge.fury.io/rb/rom-model.svg)][gem]
 [![Build Status](https://travis-ci.org/rom-rb/rom-model.svg?branch=master)][travis]
@@ -22,27 +22,9 @@ The package includes:
 - `ROM::Validator` a standalone validator object extension built on top of
   `ActiveModel::Validations` with additional features like nested validators
 
-## The Plan™
+## Future Plans
 
-This gem is built on top of existing 3rd party gems that have proven to be stable
-and good-enough. Unfortunately neither Virtus nor ActiveModel do not meet certain
-design requirements to be a good fit in the long term.
-
-For that reason we're exploring how to build a better foundation for rom-model.
-Specifically following initiatives are taking place:
-
-- Exploring a lower-level validation library with great composability features
-  and simple interface
-- Investigating a lower-level input data sanitization/coercion library that would
-  be a perfect fit for handling web forms and json input
-
-Furthermore rom-model will be soon extended with a third extension for defining
-[Algebraic Data Types](https://en.wikipedia.org/wiki/Algebraic_data_type) which
-will work remarkably well with [rom-repository](https://github.com/rom-rb/rom-repository)
-and its auto-mapping features.
-
-This project will provide convenient interfaces on top of robust lower-level tools
-and if it turns out to be too big we'll split it into smaller gems.
+It is very likely this gem will be deprecated. For now please consider using [dry-validation](https://github.com/dry-rb/dry-validation) along with [dry-types](https://github.com/dry-rb/dry-types) instead of rom-model. We may integrate rom-model with these libs to provide persistence-related features for dry-validation, or just abandon rom-model completely. Time will tell.
 
 ## Installation
 
