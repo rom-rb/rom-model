@@ -1,3 +1,11 @@
+# 0.3.0 2016-07-27
+
+## Changed
+
+* Updated to work with rom 2.0
+
+[Compare v0.2.0...v0.3.0](https://github.com/rom-rb/rom-model/compare/v0.2.0...v0.3.0)
+
 # 0.2.0 2016-01-06
 
 ## Added
