@@ -6,6 +6,16 @@ end
 require 'rom-model'
 require 'rom-sql'
 
+module ROM
+  def self.env=(env)
+    @env = env
+  end
+
+  def self.env
+    @env
+  end
+end
+
 begin
   require 'byebug'
 rescue LoadError

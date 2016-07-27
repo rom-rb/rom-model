@@ -1,6 +1,6 @@
 shared_context 'database' do
   let(:rom) { ROM.env = ROM.container(configuration) }
-  let(:configuration) { ROM::Configuration.new(:sql, DB_URI).use(:macros) }
+  let(:configuration) { ROM::Configuration.new(:sql, DB_URI) }
   let(:uri) { DB_URI }
   let(:conn) { Sequel.connect(uri) }
 
