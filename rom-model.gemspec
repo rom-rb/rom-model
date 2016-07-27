@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rom-support', '~> 2.0'
   spec.add_runtime_dependency 'charlatan', '~> 0.1'
   spec.add_runtime_dependency 'virtus', '~> 1.0', '>= 1.0.5'
-  spec.add_runtime_dependency 'activemodel', '>= 3.0', '< 5.0'
+  spec.add_runtime_dependency 'activemodel', '>= 3.0', "< 6.0"
   spec.add_runtime_dependency 'i18n'
 
   spec.add_development_dependency "bundler"
