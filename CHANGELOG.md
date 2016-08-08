@@ -1,3 +1,12 @@
+# 0.4.0 2016-08-08
+
+## Changed
+
+* Updated dependencies to work with Rails 5
+* [break] Drop support for ruby 2.1
+
+[Compare v0.3.0...v0.4.0](https://github.com/rom-rb/rom-model/compare/v0.3.0...v0.4.0)
+
 # 0.3.0 2016-07-27
 
 ## Changed
