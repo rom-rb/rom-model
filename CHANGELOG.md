@@ -1,3 +1,9 @@
+# to-be-released
+
+## Internal
+
+* [`rom-support`](https://github.com/rom-rb/rom-support) dependency was replaced with [`dry-core`](https://github.com/rom-rb/rom-model) (flash-gordon)
+
 # 0.4.0 2016-08-08
 
 ## Changed

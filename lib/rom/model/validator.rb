@@ -1,11 +1,10 @@
 require 'dry-equalizer'
 require 'charlatan'
+require 'dry/core/class_attributes'
 
-require 'rom/support/constants'
 require 'rom/constants'
 
 require 'rom/model/validator/uniqueness_validator'
-require 'rom/support/class_macros'
 
 require 'rom/pipeline'
 
@@ -52,7 +51,7 @@ module ROM
       def self.included(base)
         base.class_eval do
           extend ClassMethods
-          extend ROM::ClassMacros
+          extend Dry::Core::ClassAttributes
 
           include ActiveModel::Validations
           include Dry::Equalizer(:attributes, :errors)
