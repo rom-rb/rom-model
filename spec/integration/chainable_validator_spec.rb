@@ -31,23 +31,23 @@ describe 'Chaning validations into a commad' do
   end
 
   it 'works' do
-    expect { rom.command(:users).create.call(name: 'John', email: 'john@doe.org') }
-      .to change(rom.relation(:users), :count).by 1
+    expect { rom.commands[:users].create.call(name: 'John', email: 'john@doe.org') }
+      .to change(rom.relations[:users], :count).by 1
   end
 
   it 'runs validations' do
-    validated_command = (user_validator >> rom.command(:users).create)
+    validated_command = (user_validator >> rom.commands[:users].create)
     expect {
       validated_command.call({})
     }.to raise_error(ROM::Model::ValidationError)
   end
 
   it 'calls the nested command when validations pass' do
-    validated_command = (user_validator >> rom.command(:users).create)
+    validated_command = (user_validator >> rom.commands[:users].create)
     attributes = user_attrs.new(name: 'John', email: 'john@doe.org')
     expect {
       validated_command.call(attributes)
-    }.to change(rom.relation(:users), :count).by 1
+    }.to change(rom.relations[:users], :count).by 1
 
   end
 end
